@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: 'confirm git pull'
       run: |
+        which snap
+        snap install yq
         yq --version
         git clone https://github.com/hamadakafu/argocd-sample.git
         cd argocd-sample
