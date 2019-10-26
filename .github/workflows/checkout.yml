@@ -14,11 +14,10 @@ jobs:
     - uses: actions/checkout@v1
       with:
         repository: 'hamadakafu/argocd-sample'
-        path: 'hamadakafu_argocd-sample'
         token: '${{ secrets.SAMPLE_GITHUB_TOKEN }}'
     - name: 'confirm git pull'
       run: |
-        cd hamadakfu_argocd-sample
+        # cd hamadakfu_argocd-sample
         ls -lat
         git log --oneline
 
