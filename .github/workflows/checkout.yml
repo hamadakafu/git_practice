@@ -1,0 +1,25 @@
+name: checkout sample
+
+on:
+  push:
+    branches: 
+      # if 'develop/**', all versions are targetted.
+      - 'develop/1.0'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        repository: 'hamadakafu/argocd-sample'
+        path: 'hamadakafu_argocd-sample'
+        token: '${{ secrets.SAMPLE_GITHUB_TOKEN }}'
+    - name: 'confirm git pull'
+      run: |
+        cd hamadakfu_argocd-sample
+        ls -lat
+        git log --oneline
+
