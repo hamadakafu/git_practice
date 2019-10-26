@@ -13,11 +13,9 @@ jobs:
     steps:
     - name: 'confirm git pull'
       run: |
-        mkdir hamadakafu_argocd-sample
-        cd hamadakafu_argocd-sample
-        git init
+        git clone https://github.com/hamadakafu/argocd-sample.git
+        cd argocd-sample
         git remote set-url --push origin https://hamadakafu:${{ secrets.SAMPLE_GITHUB_TOKEN }}@github.com/hamadakafu/argocd-sample
-        git pull
         ls -lat
         git log --oneline
 
