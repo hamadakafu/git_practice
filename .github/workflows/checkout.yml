@@ -2,9 +2,8 @@ name: checkout sample
 
 on:
   push:
-    branches: 
-      # if 'develop/**', all versions are targetted.
-      - 'develop/1.0'
+    branches:
+      - 'master'
 
 jobs:
   build:
