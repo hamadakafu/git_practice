@@ -18,4 +18,5 @@ jobs:
         git remote set-url --push origin https://hamadakafu:${{ secrets.SAMPLE_GITHUB_TOKEN }}@github.com/hamadakafu/argocd-sample
         ls -lat
         git log --oneline
+        which yq
 
