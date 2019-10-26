@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-      with:
-        repository: 'hamadakafu/argocd-sample'
-        token: '${{ secrets.SAMPLE_GITHUB_TOKEN }}'
     - name: 'confirm git pull'
       run: |
-        # cd hamadakfu_argocd-sample
+        mkdir hamadakafu_argocd-sample
+        cd hamadakfu_argocd-sample
+        git init
+        git remote set-url --push origin https://hamadakafu:${{ secrets.SAMPLE_GITHUB_TOKEN }}@github.com/hamadakafu/argocd-sample
+        git pull
         ls -lat
         git log --oneline
 
