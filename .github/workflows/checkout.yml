@@ -12,17 +12,16 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
-    - name: 'confirm git pull'
-      run: |
-        git clone https://github.com/hamadakafu/argocd-sample.git
-        cd argocd-sample
-        git remote set-url --push origin https://hamadakafu:${{ secrets.SAMPLE_GITHUB_TOKEN }}@github.com/hamadakafu/argocd-sample
+    - uses: hamadakafu/commit-another-repository
+      repository: hamadakafu/git_practice
+      refs: hamadakafu-patch-1
+      access_token: ${{ secrets.SAMPLE_GITHUB_TOKEN }}
+      username: hamadakafu
+      email: kafu.h1998@gmail.com
+      commit_message: push from commit-another-repository
+      command: |
         ls -lat
-        git log --oneline
-        sudo snap install yq
-        yq --version
-        yq w --inplace charts/sample-helm-chart/values.yaml 'image.tag' 1.6
-        git config --global user.name "hamadakafu"
-        git commit -am "change image tag"
-        git push
+        wget -O /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/download/2.4.0/yq_linux_amd64"
+        chmod +x /usr/local/bin/yq
+        touch hoge.yml
 
