@@ -17,8 +17,6 @@ jobs:
       env:
         HOGE: hogehoge
       with:
-        entrypoint: /bin/sh -c
-        args: |
-          echo hoge && \
-          echo ${HOGE}
+        entrypoint: /bin/sh
+        args: echo hoge && echo ${HOGE}
 
