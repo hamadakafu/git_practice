@@ -11,6 +11,7 @@ jobs:
     runs-on: self-hosted
 
     steps:
+    - uses: actions/checkout@master
     - name: 'confirm git pull'
       run: |
         git clone https://github.com/hamadakafu/argocd-sample.git
