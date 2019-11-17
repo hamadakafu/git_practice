@@ -17,5 +17,5 @@ jobs:
       env:
         HOGE: hogehoge
       with:
-        args: echo hoge && echo ${HOGE}
+        args: echo ${HOGE}
 
