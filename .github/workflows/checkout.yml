@@ -13,15 +13,16 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - uses: hamadakafu/commit-another-repository
-      repository: hamadakafu/git_practice
-      refs: hamadakafu-patch-1
-      access_token: ${{ secrets.SAMPLE_GITHUB_TOKEN }}
-      username: hamadakafu
-      email: kafu.h1998@gmail.com
-      commit_message: push from commit-another-repository
-      command: |
-        ls -lat
-        wget -O /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/download/2.4.0/yq_linux_amd64"
-        chmod +x /usr/local/bin/yq
-        touch hoge.yml
+      with:
+        repository: hamadakafu/git_practice
+        refs: hamadakafu-patch-1
+        access_token: ${{ secrets.SAMPLE_GITHUB_TOKEN }}
+        username: hamadakafu
+        email: kafu.h1998@gmail.com
+        commit_message: push from commit-another-repository
+        command: |
+          ls -lat
+          wget -O /usr/local/bin/yq "https://github.com/mikefarah/yq/releases/download/2.4.0/yq_linux_amd64"
+          chmod +x /usr/local/bin/yq
+          touch hoge.yml
 
