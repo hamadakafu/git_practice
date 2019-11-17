@@ -12,7 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
-    - uses: hamadakafu/commit-another-repository
+    - uses: hamadakafu/commit-another-repository@master
       with:
         repository: hamadakafu/git_practice
         refs: hamadakafu-patch-1
