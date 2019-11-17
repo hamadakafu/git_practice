@@ -16,7 +16,9 @@ jobs:
       uses: docker://alpine:3.10
       env:
         HOGE: hogehoge
-      run: |
-        echo hoge
-        echo ${HOGE}
+      with:
+        entrypoint: /bin/bash
+        args: |
+          echo hoge && \
+          echo ${HOGE}
 
