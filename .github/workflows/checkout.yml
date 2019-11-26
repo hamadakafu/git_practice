@@ -15,9 +15,4 @@ jobs:
           helm: 2.16.1
           helmv3: 3.0.0
           command: |
-            kubectl version --client
-            kustomize version
             helmv3 version
-            yq --version
-            jq --version
-            go version
