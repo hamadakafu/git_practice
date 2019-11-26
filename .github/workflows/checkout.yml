@@ -19,8 +19,6 @@ jobs:
             kustomize version
             helm version --client
             helmv3 version
-            kubeval --version
-            conftest --version
             yq --version
             jq --version
             go version
