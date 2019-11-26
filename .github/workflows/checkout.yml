@@ -6,9 +6,9 @@ jobs:
   test-action:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1.2.0
+      - uses: actions/checkout@v1
       - name: Run Kubernetes tools
-        uses: stefanprodan/kube-tools@v1
+        uses: stefanprodan/kube-tools@v1.2.0
         with:
           kubectl: 1.16.2
           kustomize: 3.4.0
@@ -16,3 +16,6 @@ jobs:
           helmv3: 3.0.0
           command: |
             helmv3 version
+            yq --version
+            jq --version
+            go version
