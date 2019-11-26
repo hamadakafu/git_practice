@@ -17,7 +17,6 @@ jobs:
           command: |
             kubectl version --client
             kustomize version
-            helm version --client
             helmv3 version
             yq --version
             jq --version
