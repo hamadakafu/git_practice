@@ -12,10 +12,6 @@ jobs:
         with:
           kubectl: 1.16.2
           kustomize: 3.4.0
-          helm: 2.16.1
-          helmv3: 3.0.0
+          helm: 3.0.0
           command: |
-            helmv3 version
-            yq --version
-            jq --version
-            go version
+            helm version
