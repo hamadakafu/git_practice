@@ -1,21 +1,26 @@
-name: checkout sample
+name: CI
 
-on:
-  push:
-    branches:
-      - 'master'
+on: push
 
 jobs:
-  build:
-
-    runs-on: self-hosted
-
+  test-action:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: echo in docker
-      uses: docker://alpine:3.10
-      env:
-        HOGE: hogehoge
-      with:
-        args: echo ${HOGE}
-
+      - uses: actions/checkout@v1
+      - name: Run Kubernetes tools
+        uses: stefanprodan/kube-tools@v1
+        with:
+          kubectl: 1.16.2
+          kustomize: 3.4.0
+          helm: 2.16.1
+          helmv3: 3.0.0
+          command: |
+            kubectl version --client
+            kustomize version
+            helm version --client
+            helmv3 version
+            kubeval --version
+            conftest --version
+            yq --version
+            jq --version
+            go version
