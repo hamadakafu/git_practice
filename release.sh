@@ -10,8 +10,8 @@ fi
 readonly new_tag=$1
 readonly ignore_branch=$2
 
-readonly now_branch=$(git branch --show-current)
-readonly old_tag=$(git tag --sort=-creatordate --merged=${now_branch} | head -n 1)
+readonly current_branch=$(git branch --show-current)
+readonly old_tag=$(git tag --sort=-creatordate --merged=${current_branch} | head -n 1)
 
 set -x
 tmpfile=$(mktemp)
@@ -50,12 +50,18 @@ git log --pretty=oneline ${old_tag}...HEAD \
   >> ${tmpfile}
 echo >> ${tmpfile}
 
-cat ${tmpfile}
+echo "====== Release Note ======"
+
+cat "${tmpfile}"
+echo "==================
+"
+echo "tag: ${old_tag} ==> ${new_tag}"
+echo "branch: ${current_branch}"
 
 read -r -p "リリースしますか? [y/N] " response
 case "$response" in
   [yY][eE][sS]|[yY])
-    set -x
+    set -exuo pipefail
     echo "${new_tag}" > VERSION
     git add VERSION
     git commit -m "chore(release): ${new_tag}"
